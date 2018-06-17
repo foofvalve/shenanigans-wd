@@ -68,11 +68,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BaseTest.cs" />
+    <Compile Include="Core\TestData.cs" />
+    <Compile Include="Core\TestResult.cs" />
     <Compile Include="Core\WebDriverExtensions.cs" />
     <Compile Include="Core\WebElementExtensions.cs" />
     <Compile Include="Pages\BYOJet\HomePage.cs" />
-    <Compile Include="Tests\Nunit.cs" />
-    <Compile Include="Tests\Unit.cs" />
+    <Compile Include="UnitTests\Nunit.cs" />
+    <Compile Include="UnitTests\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -82,9 +84,13 @@
     <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Pages\AuntBetty\" />
     <Folder Include="Pages\Common\" />
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnitTests\Test.html" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

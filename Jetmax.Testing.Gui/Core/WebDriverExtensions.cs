@@ -18,6 +18,16 @@ namespace Jetmax.Testing.Gui.Core
             return element;
         }
 
+        public static void SwithIframe(this IWebDriver driver, string iframeLocator)
+        {
+
+        }
+
+        public static void WaitForPageLoad(this IWebDriver driver)
+        {
+
+        }
+
         private static By UsingLocator(string locator)
         {
             // TODO: Case statement to figure locator strategy

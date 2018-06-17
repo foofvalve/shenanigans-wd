@@ -13,6 +13,7 @@ namespace Jetmax.Testing.Gui.Tests
     public class Unit : BaseTest
     {
         private ScreenCaptureJob scj;
+        private string baseUrl;
 
         [TestInitialize]
         public void Setup()
@@ -39,14 +40,78 @@ namespace Jetmax.Testing.Gui.Tests
             
 
             scj.Start();
+
+            
+            baseUrl = "file:///C:/Users/ryanr/source/repos/Jetmax.Testing.Gui/Jetmax.Testing.Gui/Tests/Test.html";
         }
 
         [TestMethod]
-        public void TestMethod1()
+        public void TestInputtingValueIntoTextField()
         {
             Console.WriteLine("Test");
-            Wd.Visit("https://byojet.com");
+            Wd.Visit(baseUrl);
+            
             Wd.Get(HomePage.SearchForm).SetText("fsd");
+        }
+
+        [TestMethod]
+        public void TestVisitingInvalidWebUrl()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestWaitForElement()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestClickingElement()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestForElementUnclikable()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestInputElementUneditable()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestSelectValueFromDropDown()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestTickingCheckbox()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestGettingElementText()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestExecuteJavascript()
+        {
+
+        }
+
+        [TestMethod]
+        public void TestSwitchingBetweenIframe()
+        {
+
         }
 
         [TestCleanup]
