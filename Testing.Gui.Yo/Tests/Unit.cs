@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.IO;
-using Microsoft.Expression.Encoder.Profiles;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Testing.Gui.Yo.Core;
-using Testing.Gui.Yo.Pages.BYOJet;
-using Microsoft.Expression.Encoder.ScreenCapture;
 using System.Windows.Forms;
+using Jetmax.Testing.Gui.Core;
+using Jetmax.Testing.Gui.Pages.BYOJet;
+using Microsoft.Expression.Encoder.ScreenCapture;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Testing.Gui.Yo.Tests
+namespace Jetmax.Testing.Gui.Tests
 {
     [TestClass]
     public class Unit : BaseTest

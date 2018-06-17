@@ -1,13 +1,8 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
-namespace Testing.Gui.Yo.Core
+namespace Jetmax.Testing.Gui.Core
 {
     public class BaseTest
     {

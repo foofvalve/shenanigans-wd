@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
+using NUnit.Framework;
 
-namespace Testing.Gui.Yo.Tests
+namespace Jetmax.Testing.Gui.Tests
 {
     [TestFixture]
     public class Nunit
