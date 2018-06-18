@@ -1,33 +1,35 @@
-﻿using System;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using Jetmax.Testing.Gui.Core;
+﻿using Jetmax.Testing.Gui.Core;
 using Jetmax.Testing.Gui.Pages.BYOJet;
-using Microsoft.Expression.Encoder.ScreenCapture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Jetmax.Testing.Gui.UnitTests
 {
     [TestClass]
     public class Unit : BaseTest
     {
-        private ScreenCaptureJob scj;
-        private string baseUrl;
+        private string _baseUrl;
+        private ScreenRecorder _screenRecorder;
+        public TestContext TestContext { get; set; }
 
         [TestInitialize]
         public void Setup()
         {
             Init();
-            
-            baseUrl = "file:///C:/Users/ryanr/source/repos/Jetmax.Testing.Gui/Jetmax.Testing.Gui/Tests/Test.html";
+            _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
+            _screenRecorder.StartRecording();
+            string codeBase = Assembly.GetExecutingAssembly().Location;
+            var dir = new FileInfo(codeBase).Directory + @"\UnitTests\Test.html";
+            _baseUrl = new Uri(dir).ToString();
         }
 
         [TestMethod]
         public void TestInputtingValueIntoTextField()
         {
             Console.WriteLine("Test");
-            Wd.Visit(baseUrl);
+            Wd.Visit(_baseUrl);
             
             Wd.Get(HomePage.SearchForm).SetText("fsd");
         }
@@ -95,7 +97,8 @@ namespace Jetmax.Testing.Gui.UnitTests
         [TestCleanup]
         public void TestCleanUp()
         {
-            scj.Stop();
+            var recording = _screenRecorder.StopRecording();
+            Console.WriteLine(recording);
         }
 
         [ClassCleanup]

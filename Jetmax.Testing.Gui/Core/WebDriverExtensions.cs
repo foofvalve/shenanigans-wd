@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 
 namespace Jetmax.Testing.Gui.Core
 {
@@ -6,6 +7,7 @@ namespace Jetmax.Testing.Gui.Core
     {
         public static void Visit(this IWebDriver driver, string url)
         {
+            Console.WriteLine(url);
             driver.Navigate().GoToUrl(url);
             // TODO: Log
         }

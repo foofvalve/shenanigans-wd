@@ -86,7 +86,9 @@
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="UnitTests\Test.html" />
+    <Content Include="UnitTests\Test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

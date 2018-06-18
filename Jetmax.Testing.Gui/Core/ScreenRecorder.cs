@@ -22,7 +22,6 @@ namespace Jetmax.Testing.Gui.Core
             ScreenCaptureVideoProfile.Size = new Size(width, height);
             CaptureRectangle = new Rectangle(0, 0, width, height);
             ScreenCaptureVideoProfile.Force16Pixels = true;
-            ShowFlashingBoundary = true;
             ScreenCaptureVideoProfile.FrameRate = 30;
             CaptureMouseCursor = true;
             ScreenCaptureVideoProfile.Quality = 20;
@@ -39,6 +38,8 @@ namespace Jetmax.Testing.Gui.Core
         public string StopRecording()
         {
             Stop();
+           
+            //this?.Dispose();
             return _outputFilePath;
         }
     }
