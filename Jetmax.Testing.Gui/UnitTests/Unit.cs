@@ -7,7 +7,7 @@ using Jetmax.Testing.Gui.Pages.BYOJet;
 using Microsoft.Expression.Encoder.ScreenCapture;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Jetmax.Testing.Gui.Tests
+namespace Jetmax.Testing.Gui.UnitTests
 {
     [TestClass]
     public class Unit : BaseTest
@@ -19,28 +19,6 @@ namespace Jetmax.Testing.Gui.Tests
         public void Setup()
         {
             Init();
-            File.Delete(@"C:\_temp\ScreenRecording.wmv");
-            int height =
-            Screen.PrimaryScreen.Bounds.Height - (Screen.PrimaryScreen.Bounds.Height % 16);
-            int width =
-            Screen.PrimaryScreen.Bounds.Width - (Screen.PrimaryScreen.Bounds.Width % 16);
-
-
-            scj = new ScreenCaptureJob();
-            scj.ScreenCaptureVideoProfile.Size = new Size(width, height);
-            scj.CaptureRectangle = new Rectangle(0, 0, width, height);
-            scj.ScreenCaptureVideoProfile.Force16Pixels = true;
-            scj.ShowFlashingBoundary = true;
-            scj.ScreenCaptureVideoProfile.FrameRate = 30;
-            scj.CaptureMouseCursor = true;
-            scj.ScreenCaptureVideoProfile.Quality = 20;
-            
-            scj.ScreenCaptureVideoProfile.AutoFit = true;
-            scj.OutputScreenCaptureFileName = @"C:\_temp\ScreenRecording.wmv";
-            
-
-            scj.Start();
-
             
             baseUrl = "file:///C:/Users/ryanr/source/repos/Jetmax.Testing.Gui/Jetmax.Testing.Gui/Tests/Test.html";
         }
