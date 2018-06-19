@@ -30,8 +30,8 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             Console.WriteLine("Test");
             Wd.Visit(_baseUrl);
-            
-            Wd.Get(HomePage.SearchForm).SetText("fsd");
+            Wd.Get(TestPage.EnterTextField).SetText("cheese");
+           
         }
 
         [TestMethod]

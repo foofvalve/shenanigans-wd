@@ -1,5 +1,6 @@
 ﻿using System;
 using OpenQA.Selenium;
+using System.Linq;
 
 namespace Jetmax.Testing.Gui.Core
 {
@@ -30,10 +31,28 @@ namespace Jetmax.Testing.Gui.Core
 
         }
 
-        private static By UsingLocator(string locator)
+        public static By UsingLocator(string locator)
         {
-            // TODO: Case statement to figure locator strategy
-            return By.CssSelector(locator);
+            if (locator.StartsWith("//"))
+            {
+                return By.XPath(locator);
+            }
+            else if (locator.StartsWith("#"))
+            {
+                return By.CssSelector(locator);
+            }
+            else if (locator.StartsWith("."))
+            {
+                return By.CssSelector(locator);
+            }
+            else if (locator.Count(w => w == ' ') == 0 && !locator.Contains("["))
+            {
+                return By.Id(locator);
+            }
+            else
+            {
+                return By.CssSelector(locator);  
+            }
         }
 
         private static void WaitForElement(this IWebDriver driver, string locator)

@@ -70,8 +70,10 @@
     <Compile Include="Core\WebElementExtensions.cs" />
     <Compile Include="Pages\BYOJet\HomePage.cs" />
     <Compile Include="UnitTests\ScreenRecorderTests.cs" />
+    <Compile Include="UnitTests\TestPage.cs" />
     <Compile Include="UnitTests\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\LocatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
