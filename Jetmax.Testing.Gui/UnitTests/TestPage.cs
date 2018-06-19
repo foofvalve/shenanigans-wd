@@ -10,6 +10,7 @@
         public static string SubscribeButton = "//button[text()='Subscribe']";
         public static string WikiPeadiaIFrame = "iframe[title*='Avocados']";
         public static string MainContentArea = ".main-content";
-        public static string ListOption = "//li[text()='RUNTIME']";
+        public static string ListOption = "//li[contains(text(), 'RUNTIME')]";
+        public static string LinkToStackOverflow = "#a-link";
     }
 }

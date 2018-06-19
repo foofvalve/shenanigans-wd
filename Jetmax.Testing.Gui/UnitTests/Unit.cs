@@ -1,5 +1,4 @@
 ﻿using Jetmax.Testing.Gui.Core;
-using Jetmax.Testing.Gui.Pages.BYOJet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
@@ -31,19 +30,22 @@ namespace Jetmax.Testing.Gui.UnitTests
             Console.WriteLine("Test");
             Wd.Visit(_baseUrl);
             Wd.Get(TestPage.EnterTextField).SetText("cheese");
-           
+            Assert.IsTrue(Wd.Get(TestPage.EnterTextField).GetAttribute("value") == "cheese");
         }
 
         [TestMethod]
-        public void TestVisitingInvalidWebUrl()
+        public void TestNonExistentElement()
         {
-
+            Wd.Visit(_baseUrl);
+            Wd.Get("#this-does-not-exists");
         }
 
         [TestMethod]
-        public void TestWaitForElement()
+        public void TestElementRequiringRuntimeData()
         {
-
+            Wd.Visit(_baseUrl);
+            var textContent = Wd.Get(TestPage.ListOption, "Coffee").Text;
+            Assert.AreEqual(textContent, "Black Coffee");
         }
 
         [TestMethod]
@@ -72,18 +74,6 @@ namespace Jetmax.Testing.Gui.UnitTests
 
         [TestMethod]
         public void TestTickingCheckbox()
-        {
-
-        }
-
-        [TestMethod]
-        public void TestGettingElementText()
-        {
-
-        }
-
-        [TestMethod]
-        public void TestExecuteJavascript()
         {
 
         }

@@ -10,6 +10,8 @@ namespace Jetmax.Testing.Gui.Core
         
         public static void Init()
         {
+            if (Wd != null) return; //use the same instance
+
             var browser = Environment.GetEnvironmentVariable("browser");
             if (browser == "chrome")
             {

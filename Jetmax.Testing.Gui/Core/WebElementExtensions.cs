@@ -6,14 +6,19 @@ namespace Jetmax.Testing.Gui.Core
     {
         public static void PerformClick(this IWebElement element)
         {
-            // check if element is displayed
-            // check if element is visible
+            if (element.Displayed && element.Enabled)
+            {
+                element.Click();
+            }
         }
 
         public static void SetText(this IWebElement element, string text)
         {
-            // check if element is displayed
-            // check if element is editable
+            if (element.Displayed && element.Enabled)
+            {
+                element.Clear();
+                element.SendKeys(text);
+            }
         }
 
         public static void SelectOption(this IWebElement element, string text)
