@@ -8,21 +8,21 @@ namespace Jetmax.Testing.Gui.Core
     public class BaseTest
     {
         public static IWebDriver Wd { get; private set; }
-        public static string Browser;
+        public static string RunInBrowser;
 
         public TestContext TestContext { get; set; }
 
         [ClassInitialize]
         public static void SuiteSetup(TestContext testContext)
         {
-            Browser = testContext.Properties["browser"].ToString();
+            RunInBrowser = testContext.Properties["runInBrowser"].ToString();
         }
 
         public static void Init()
         {
             if (Wd != null) return; //use the same instance
             
-            if (Browser == "chrome")
+            if (RunInBrowser == "chrome")
             {
                 Wd = new ChromeDriver();
             }
