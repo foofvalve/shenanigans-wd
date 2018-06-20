@@ -80,6 +80,7 @@
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Readme.md" />
+    <None Include="test.runsettings" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -11,13 +11,22 @@ namespace Jetmax.Testing.Gui.UnitTests
     {
         private string _baseUrl;
         private ScreenRecorder _screenRecorder;
+        private static TestContext _testContext;
+        
         public TestContext TestContext { get; set; }
+
+        [ClassInitialize]
+        public static void SuiteSetup(TestContext testContext)
+        {
+            _testContext = testContext;
+            Browser = _testContext.Properties["browser"].ToString();
+        }
 
         [TestInitialize]
         public void Setup()
         {
             Init();
-            _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
+            _screenRecorder = new ScreenRecorder(Path.GetTempPath(), _testContext.TestName);
             _screenRecorder.StartRecording();
             string codeBase = Assembly.GetExecutingAssembly().Location;
             var dir = new FileInfo(codeBase).Directory + @"\UnitTests\Test.html";
