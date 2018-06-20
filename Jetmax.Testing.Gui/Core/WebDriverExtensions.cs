@@ -12,6 +12,7 @@ namespace Jetmax.Testing.Gui.Core
             Console.WriteLine(url);
             driver.Navigate().GoToUrl(url);
             WaitForPageLoad(driver, timeout);
+            //WaitUntilExists(driver, By.TagName("body"));
             // TODO: Log
         }
 
@@ -76,7 +77,7 @@ namespace Jetmax.Testing.Gui.Core
 
         private static void WaitForElementToDisappear(this IWebDriver driver, string locator)
         {
-
+            throw new NotImplementedException("TODO");
         }
 
         private static string ExecuteJs(this IWebDriver driver, string script)
