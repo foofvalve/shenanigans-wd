@@ -11,6 +11,7 @@ namespace Jetmax.Testing.Gui.Core
             if (IsInteractable(element))
             {
                 element.Click();
+                // todo log
             }
         }
 
@@ -20,6 +21,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 element.Clear();
                 element.SendKeys(text);
+                // todo log
             }
         }
 
@@ -29,6 +31,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 var selectElement = new SelectElement(element);
                 selectElement.SelectByText(text);
+                // todo log
             }
         }
 
@@ -38,7 +41,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 return true;
             }
-            throw new Exception("Element was not visiable and enalbed");
+            throw new Exception("Element was not visible and enabled");
         }
     }
 }

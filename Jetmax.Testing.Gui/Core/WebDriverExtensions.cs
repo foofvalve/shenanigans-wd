@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Support.UI;
 
 namespace Jetmax.Testing.Gui.Core
@@ -9,11 +10,19 @@ namespace Jetmax.Testing.Gui.Core
     {
         public static void Visit(this IWebDriver driver, string url, int timeout = 20)
         {
-            Console.WriteLine(url);
-            driver.Navigate().GoToUrl(url);
-            WaitForPageLoad(driver, timeout);
-            //WaitUntilExists(driver, By.TagName("body"));
-            // TODO: Log
+            try
+            {
+                Console.WriteLine(url);
+                driver.Navigate().GoToUrl(url);
+                WaitForPageLoad(driver, timeout);
+                Assert.IsNotNull(driver.Get("//body"), "The page failed to load content");
+                // TODO: Log
+            }
+            catch (Exception e)
+            {
+                e.Data.Add("UserMessage", $"Failed to load {url} after {timeout} seconds, current url is {driver.Url}");
+                throw;
+            }
         }
 
         public static IWebElement Get(this IWebDriver driver, string locator, string runtimeData)
@@ -27,9 +36,14 @@ namespace Jetmax.Testing.Gui.Core
             return element;
         }
 
-        public static void SwithIframe(this IWebDriver driver, string iframeLocator)
+        public static void SwitchIframe(this IWebDriver driver, string iframeLocator)
         {
+            driver.SwitchTo().Frame(WaitForElement(driver, iframeLocator));
+        }
 
+        public static void SwitchBackToMainContent(this IWebDriver driver)
+        {
+            driver.SwitchTo().DefaultContent();
         }
 
         public static void WaitForPageLoad(this IWebDriver driver, int timeout = 20)
