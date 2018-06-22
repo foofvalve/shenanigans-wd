@@ -12,7 +12,7 @@ namespace Jetmax.Testing.Gui.Core
 
         public ScreenRecorder(string saveDir, string fileName)
         {
-            _outputFilePath = Path.Combine(saveDir, "scr_" + fileName + "_" + DateTime.Now.ToString("s").Replace(":","-") + ".wmv");
+            _outputFilePath = Path.Combine(saveDir, "scr" + "_" + DateTime.Now.ToString("s").Replace(":","-") + "_" + fileName + ".wmv");
 
             int height =
                 Screen.PrimaryScreen.Bounds.Height - (Screen.PrimaryScreen.Bounds.Height % 16);
