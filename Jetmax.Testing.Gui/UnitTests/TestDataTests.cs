@@ -21,7 +21,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             var testData = new TestData();
             testData.Add("meh", "the-val");
-            var expectedResult = testData.Get("meh");
+            var expectedResult = testData.Find("meh");
             Assert.AreEqual("the-val", expectedResult);
         }
 

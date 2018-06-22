@@ -41,6 +41,11 @@ namespace Jetmax.Testing.Gui.Core
             return result;
         }
 
+        public string Find(string key)
+        {
+            return Get<string>(key);
+        }
+
         public object Get(string key)
         {
             var valueExists = Dictionary.TryGetValue(key, out var outVal);

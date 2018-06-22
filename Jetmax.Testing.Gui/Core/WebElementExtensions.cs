@@ -12,6 +12,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 element.Click();
                 // todo log
+                
             }
         }
 
