@@ -1,4 +1,7 @@
-﻿using Jetmax.Testing.Gui.Core;
+﻿using System;
+using System.CodeDom;
+using Jetmax.Testing.Gui.Core;
+using Jetmax.Testing.Gui.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Jetmax.Testing.Gui.UnitTests
@@ -55,6 +58,47 @@ namespace Jetmax.Testing.Gui.UnitTests
             var result = testData.Print();
             Assert.IsTrue(result.Contains("Firstname : John"));
             Assert.IsTrue(result.Contains("Paid : True"));
+        }
+
+        [TestMethod]
+        public void TestAddingFlightSearchDataContent()
+        {
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 1
+            });
+
+            Assert.IsTrue(testData.Find("Origin") == "SYD");
+            testData.Print();
+        }
+
+        [TestMethod]
+        public void TestSeedingCustomerDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void TestSeedingContactDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void TestSeedingAddressDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void TestSeedingFormOfPaymentDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

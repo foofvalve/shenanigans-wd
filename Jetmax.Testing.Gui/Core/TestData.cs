@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Jetmax.Testing.Gui.Models;
 
 namespace Jetmax.Testing.Gui.Core
 {
@@ -12,6 +15,18 @@ namespace Jetmax.Testing.Gui.Core
         {
             Reset();
             Dictionary = new Dictionary<object, object>();
+        }
+
+        public void Add(TestParams testParams)
+        {
+            var paramsAsDict = testParams.GetType()
+                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .ToDictionary(prop => prop.Name, prop => prop.GetValue(testParams, null));
+
+            foreach (var param in paramsAsDict)
+            {
+                Add(param.Key, param.Value);
+            }
         }
 
         public void Add(string key, object value)
