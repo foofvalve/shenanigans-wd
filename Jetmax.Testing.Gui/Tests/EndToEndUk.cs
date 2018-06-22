@@ -16,6 +16,7 @@ namespace Jetmax.Testing.Gui.Tests
         public void Setup()
         {
             Init();
+            Log.Init(TestContext.TestName);
             _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
             _screenRecorder.StartRecording();
             _testData = new TestData();
@@ -39,12 +40,7 @@ namespace Jetmax.Testing.Gui.Tests
             var recording = _screenRecorder.StopRecording();
             Console.WriteLine(recording);
             _testData.Print();
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            CleanUp();
+            Log.Print();
         }
     }
 }

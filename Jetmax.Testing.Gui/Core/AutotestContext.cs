@@ -36,5 +36,11 @@ namespace Jetmax.Testing.Gui.Core
         {
             Wd?.Dispose();
         }
+
+        [ClassCleanup]
+        public static void ClassCleanup()
+        {
+            CleanUp();
+        }
     }
 }
