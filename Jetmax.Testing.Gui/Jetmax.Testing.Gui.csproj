@@ -7,8 +7,8 @@
     <ProjectGuid>{844E49A8-B18A-4860-BD56-D7E823449A36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Testing.Gui.Yo</RootNamespace>
-    <AssemblyName>Testing.Gui.Yo</AssemblyName>
+    <RootNamespace>Jetmax.Testing.Gui</RootNamespace>
+    <AssemblyName>Jetmax.Testing.Gui</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -37,7 +37,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Encoder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <HintPath>..\packages\Microsoft.Expression.Encoder.4.0.4276.3\lib\net45\Microsoft.Expression.Encoder.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -47,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="WebDriver, Version=3.12.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Selenium.WebDriver.3.12.1\lib\net45\WebDriver.dll</HintPath>
     </Reference>
@@ -56,19 +63,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\BaseTest.cs" />
+    <Compile Include="Core\Log.cs" />
+    <Compile Include="Core\LogEvent.cs" />
+    <Compile Include="Core\ScreenRecorder.cs" />
+    <Compile Include="Core\TestData.cs" />
+    <Compile Include="Core\TestResult.cs" />
     <Compile Include="Core\WebDriverExtensions.cs" />
     <Compile Include="Core\WebElementExtensions.cs" />
-    <Compile Include="Pages\BYOJet\HomePage.cs" />
-    <Compile Include="Tests\Unit.cs" />
+    <Compile Include="UnitTests\ScreenRecorderTests.cs" />
+    <Compile Include="UnitTests\TestPage.cs" />
+    <Compile Include="UnitTests\Unit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\LocatorTests.cs" />
+    <Compile Include="UnitTests\LoggerTest.cs" />
+    <Compile Include="UnitTests\TestDataTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
+    <None Include="Readme.md" />
+    <None Include="test.runsettings" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\AuntBetty\" />
+    <Folder Include="Models\" />
     <Folder Include="Pages\Common\" />
     <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UnitTests\Test.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

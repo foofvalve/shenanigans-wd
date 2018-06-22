@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	<script>
+		function hide() {
+			var ele = document.getElementById("toggle-visibility");
+			ele.style.display = "none";
+		}
+
+		function setIframeContent() {
+			document.getElementById('the-frame').contentWindow.document
+				.write("<html><body><div class='inside-frame'>This is insed the iFrame</div></body></html> ");
+		};
+	</script>
+</head>
+
+<body>
+    <div class="main-content">
+        <h1>Test</h1>
+        <input id="okbutton" type="button" value="Set Iframe Content" onclick="setIframeContent()" />
+        <span style="visibility: hidden">this is hidden</span>
+        <select name="combo-box">
+            <option value="first">First Value</option>
+            <option value="second" selected>Second Value</option>
+            <option value="third">Third Value</option>
+        </select>
+        <input type="text" class="disable-field" placeholder="This is disabled" />
+        <br />
+        <input type="text" class="idx_d1" placeholder="Enter text here" />
+        <br />
+	    <button id="hide" onclick="hide()">Hide</button>
+        <p id="toggle-visibility">THis element was/is hidden</p>
+        <span id="hidden-unclickable" style="display: none">THis element was/is hidden</span>
+        <form>
+            <div>
+                <input type="checkbox" id="subscribeNews" name="subscribe" value="newsletter">
+                <label for="subscribeNews">Subscribe to newsletter?</label>
+            </div>
+            <div>
+                <button type="submit">Subscribe</button>
+            </div>
+        </form>
+        <a id="a-link" href="https://stackoverflow.com">
+            <span class="-img _glyph">Stack Overflow</span>
+        </a>
+    </div>
+    <iframe id="the-frame" title="The Wikipedia page for Avocados"></iframe>
+    <ul>
+        <li>Black Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+</body>
+
+</html>

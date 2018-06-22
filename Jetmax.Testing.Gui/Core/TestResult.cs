@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Testing.Gui.Yo.Pages.BYOJet
+namespace Jetmax.Testing.Gui.Core
 {
-    class HomePage
+    class TestResult
     {
-        public static string SearchForm = "#flight-stopover-form";
     }
 }
