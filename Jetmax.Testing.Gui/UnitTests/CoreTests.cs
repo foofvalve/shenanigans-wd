@@ -15,8 +15,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         [TestInitialize]
         public void Setup()
         {
-            Init();
-            Log.Init(TestContext.TestName);
+            Init(TestContext.TestName);
             _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
             _screenRecorder.StartRecording();
             string codeBase = Assembly.GetExecutingAssembly().Location;

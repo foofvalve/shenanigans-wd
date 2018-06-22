@@ -1,24 +1,19 @@
 ﻿using Jetmax.Testing.Gui.Actions;
 using Jetmax.Testing.Gui.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.IO;
 
 namespace Jetmax.Testing.Gui.Tests
 {
     [TestClass]
     public class EndToEndUk : AutotestContext
     {
-        private ScreenRecorder _screenRecorder;
         private TestData _testData;
 
         [TestInitialize]
         public void Setup()
         {
-            Init();
-            Log.Init(TestContext.TestName);
-            _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
-            _screenRecorder.StartRecording();
+            Init(TestContext.TestName);
+            ScreenRecorder.StartRecording();
             _testData = new TestData();
         }
 
@@ -37,8 +32,7 @@ namespace Jetmax.Testing.Gui.Tests
         [TestCleanup]
         public void TestCleanUp()
         {
-            var recording = _screenRecorder.StopRecording();
-            Console.WriteLine(recording);
+            ScreenRecorder.StopRecording();
             _testData.Print();
             Log.Print();
         }

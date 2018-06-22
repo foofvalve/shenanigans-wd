@@ -38,8 +38,9 @@ namespace Jetmax.Testing.Gui.Core
         public string StopRecording()
         {
             Stop();
-           
+
             //this?.Dispose();
+            Console.WriteLine(_outputFilePath);
             return _outputFilePath;
         }
     }

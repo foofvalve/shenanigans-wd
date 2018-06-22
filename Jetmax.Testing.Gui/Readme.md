@@ -5,6 +5,7 @@ Implement Extension methods
 Runtime test data factory
 TestResult logger
 *Assert must log custom
+*FluentAssertion
 
 
 *Screenshot every iteraction
