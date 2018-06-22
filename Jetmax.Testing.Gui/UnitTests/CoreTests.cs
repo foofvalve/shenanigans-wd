@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 using System.Reflection;
+using Shouldly;
 
 namespace Jetmax.Testing.Gui.UnitTests
 {
@@ -28,7 +29,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         public void TestInputtingValueIntoTextField()
         {
             Wd.Get(TestPage.EnterTextField).SetText("cheese");
-            Assert.IsTrue(Wd.Get(TestPage.EnterTextField).GetAttribute("value") == "cheese");
+            Wd.Get(TestPage.EnterTextField).GetAttribute("value").ShouldBe("chees");
         }
 
         [TestMethod]
