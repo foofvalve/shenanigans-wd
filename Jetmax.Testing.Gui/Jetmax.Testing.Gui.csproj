@@ -70,7 +70,6 @@
     <Compile Include="Core\TestResult.cs" />
     <Compile Include="Core\WebDriverExtensions.cs" />
     <Compile Include="Core\WebElementExtensions.cs" />
-    <Compile Include="Pages\BYOJet\HomePage.cs" />
     <Compile Include="UnitTests\ScreenRecorderTests.cs" />
     <Compile Include="UnitTests\TestPage.cs" />
     <Compile Include="UnitTests\Unit.cs" />
@@ -88,7 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Pages\AuntBetty\" />
     <Folder Include="Pages\Common\" />
     <Folder Include="Utils\" />
   </ItemGroup>
