@@ -85,7 +85,9 @@ namespace Jetmax.Testing.Gui.Core
                 PollingInterval = TimeSpan.FromMilliseconds(250)
             };
             //fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
-            var element = fluentWait.Until(x => x.FindElement(UsingLocator(locator)));
+            var by = UsingLocator(locator);
+            var element = fluentWait.Until(x => x.FindElement(by));
+            Log.Add("Element => " + by.ToString());
             return element;
         }
 

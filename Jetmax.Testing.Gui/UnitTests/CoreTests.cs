@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Jetmax.Testing.Gui.UnitTests
 {
     [TestClass]
-    public class Unit : AutotestContext
+    public class CoreTests : AutotestContext
     {
         private string _baseUrl;
         private ScreenRecorder _screenRecorder;
@@ -16,6 +16,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         public void Setup()
         {
             Init();
+            Log.Init(TestContext.TestName);
             _screenRecorder = new ScreenRecorder(Path.GetTempPath(), TestContext.TestName);
             _screenRecorder.StartRecording();
             string codeBase = Assembly.GetExecutingAssembly().Location;
@@ -99,12 +100,6 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             var recording = _screenRecorder.StopRecording();
             Console.WriteLine(recording);
-        }
-
-        [ClassCleanup]
-        public static void ClassCleanup()
-        {
-            CleanUp();
         }
     }
 }

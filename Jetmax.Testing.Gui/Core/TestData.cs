@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jetmax.Testing.Gui.Core
 {
@@ -24,10 +21,8 @@ namespace Jetmax.Testing.Gui.Core
             {
                 throw new Exception($"Test data with key [{key}] already exists");
             }
-            else
-            {
-                Dictionary[key] = value;
-            }
+
+            Dictionary[key] = value;
         }
 
         public string Print()
@@ -38,6 +33,7 @@ namespace Jetmax.Testing.Gui.Core
                 result += string.Format("{0} : {1}", kvp.Key, kvp.Value) + Environment.NewLine;
             }
 
+            Console.WriteLine(result);
             return result;
         }
 

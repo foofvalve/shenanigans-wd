@@ -11,8 +11,7 @@ namespace Jetmax.Testing.Gui.Core
             if (IsInteractable(element))
             {
                 element.Click();
-                // todo log
-                
+                Log.Add($"\t Clicked");
             }
         }
 
@@ -22,7 +21,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 element.Clear();
                 element.SendKeys(text);
-                // todo log
+                Log.Add($"\t SetText => value: {text}");
             }
         }
 
@@ -32,7 +31,7 @@ namespace Jetmax.Testing.Gui.Core
             {
                 var selectElement = new SelectElement(element);
                 selectElement.SelectByText(text);
-                // todo log
+                Log.Add($"\t Selected => value: {text}");
             }
         }
 

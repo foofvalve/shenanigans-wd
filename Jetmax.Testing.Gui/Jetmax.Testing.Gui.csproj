@@ -78,7 +78,7 @@
     <Compile Include="Tests\EndToEndUk.cs" />
     <Compile Include="UnitTests\ScreenRecorderTests.cs" />
     <Compile Include="UnitTests\TestPage.cs" />
-    <Compile Include="UnitTests\Unit.cs" />
+    <Compile Include="UnitTests\CoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\LocatorTests.cs" />
     <Compile Include="UnitTests\LoggerTest.cs" />
