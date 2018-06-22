@@ -1,11 +1,13 @@
 ﻿TODO
 ====
 
-*Implement Extension methods
-*Runtime test data factory
-*TestResult logger
+Implement Extension methods
+Runtime test data factory
+TestResult logger
+*Assert must log custom
 
 
+*Screenshot every iteraction
 *Blend encoder for video recording 
 *Unit test lib
 *Retry ability
