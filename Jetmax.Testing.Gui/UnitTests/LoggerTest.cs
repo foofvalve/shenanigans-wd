@@ -11,19 +11,17 @@ namespace Jetmax.Testing.Gui.UnitTests
         [TestMethod]
         public void TestInitLogger()
         {
-            var log = new Log();
-            log.Init(TestContext.TestName);
-            var logs = log.Print();
-            Assert.IsTrue(logs == string.Empty);
+            Log.Init(TestContext.TestName);
+            var logs = Log.Print();
+            Assert.IsTrue(logs == "TEST DATA\r\n");
         }
 
         [TestMethod]
         public void TestPrintLogs()
         {
-            var log = new Log();
-            log.Init(TestContext.TestName);
-            log.Add("this message");
-            var logs = log.Print();
+            Log.Init(TestContext.TestName);
+            Log.Add("this message");
+            var logs = Log.Print();
             Assert.IsTrue(logs.Contains(TestContext.TestName + " this message"));
         }
     }

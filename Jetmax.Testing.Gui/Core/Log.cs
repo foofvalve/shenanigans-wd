@@ -6,16 +6,16 @@ namespace Jetmax.Testing.Gui.Core
 {
     public class Log
     {
-        private List<LogEvent> _logsEvents;
-        private string _classification;
+        private static List<LogEvent> _logsEvents;
+        private static string _classification;
 
-        public void Init(string classification)
+        public static void Init(string classification)
         {
             _classification = classification;
             _logsEvents = new List<LogEvent>();
         }
 
-        public void Add(string message)
+        public static void Add(string message)
         {
             _logsEvents.Add(new LogEvent
             {
@@ -23,10 +23,10 @@ namespace Jetmax.Testing.Gui.Core
             });
         }
 
-        public string Print()
+        public static string Print()
         {
             var entriesStringed = _logsEvents.Select(x => x.ToString());
-            var formattedEntries = string.Join(Environment.NewLine, entriesStringed.ToArray());
+            var formattedEntries = "TEST DATA" + Environment.NewLine + string.Join(Environment.NewLine, entriesStringed.ToArray());
             Console.WriteLine(formattedEntries);
             return formattedEntries;
         }
