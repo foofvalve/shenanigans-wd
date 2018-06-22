@@ -7,7 +7,7 @@ using System.Reflection;
 namespace Jetmax.Testing.Gui.UnitTests
 {
     [TestClass]
-    public class Unit : BaseTest
+    public class Unit : AutotestContext
     {
         private string _baseUrl;
         private ScreenRecorder _screenRecorder;

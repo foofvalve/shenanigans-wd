@@ -5,7 +5,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace Jetmax.Testing.Gui.Core
 {
-    public class BaseTest
+    public class AutotestContext
     {
         public static IWebDriver Wd { get; private set; }
         public static string RunInBrowser;

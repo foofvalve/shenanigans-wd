@@ -7,7 +7,7 @@ using System.IO;
 namespace Jetmax.Testing.Gui.Tests
 {
     [TestClass]
-    public class EndToEndUk : BaseTest
+    public class EndToEndUk : AutotestContext
     {
         private ScreenRecorder _screenRecorder;
         private TestData _testData;

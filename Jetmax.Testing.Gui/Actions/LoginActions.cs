@@ -3,7 +3,7 @@ using Jetmax.Testing.Gui.Pages;
 
 namespace Jetmax.Testing.Gui.Actions
 {
-    class LoginActions : BaseTest
+    class LoginActions : AutotestContext
     {
         public static void CreateAccount(TestData data)
         {

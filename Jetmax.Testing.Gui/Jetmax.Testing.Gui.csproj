@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\LoginActions.cs" />
-    <Compile Include="Core\BaseTest.cs" />
+    <Compile Include="Core\AutotestContext.cs" />
     <Compile Include="Core\Log.cs" />
     <Compile Include="Core\LogEvent.cs" />
     <Compile Include="Core\ScreenRecorder.cs" />
