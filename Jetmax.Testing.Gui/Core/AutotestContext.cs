@@ -14,6 +14,7 @@ namespace Jetmax.Testing.Gui.Core
         public static ScreenRecorder ScreenRecorder;
         public static IWebDriver Wd { get; private set; }
         public static string RunInBrowser;
+        public static bool RecordPlayback;
 
         public TestContext TestContext { get; set; }
 
@@ -21,6 +22,7 @@ namespace Jetmax.Testing.Gui.Core
         public static void SuiteSetup(TestContext testContext)
         {
             RunInBrowser = testContext.Properties["runInBrowser"].ToString().ToLower();
+            RecordPlayback = testContext.Properties["recordPlayback"].ToString().ToLower() == "true";
         }
 
         public static void Init(string testName)
@@ -39,6 +41,7 @@ namespace Jetmax.Testing.Gui.Core
                 var options = new FirefoxOptions();
                 options.AddArguments("--headless");
                 Wd = new FirefoxDriver(options);
+                RecordPlayback = false;
             }
             else if (RunInBrowser == "chrome-headless")
             {
@@ -46,6 +49,7 @@ namespace Jetmax.Testing.Gui.Core
                 chromeOptions.AddArguments("headless");
 
                 Wd = new ChromeDriver(chromeOptions);
+                RecordPlayback = false;
             }
             else if (RunInBrowser == "edge")
             {

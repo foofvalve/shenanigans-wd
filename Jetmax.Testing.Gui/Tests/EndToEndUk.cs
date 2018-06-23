@@ -13,7 +13,7 @@ namespace Jetmax.Testing.Gui.Tests
         public void Setup()
         {
             Init(TestContext.TestName);
-            ScreenRecorder.StartRecording();
+            if(RecordPlayback) ScreenRecorder.StartRecording();
             _testData = new TestData();
         }
 
