@@ -19,13 +19,13 @@ namespace Jetmax.Testing.Gui.Core
 
         public void Add(string key, object value)
         {
-            var valueExists = Dictionary.TryGetValue(key, out var outVal);
+            var valueExists = Dictionary.TryGetValue(key.ToLower(), out var outVal);
             if (valueExists)
             {
-                throw new Exception($"Test data with key [{key}] already exists");
+                throw new Exception($"Test data with key [{key.ToLower()}] already exists");
             }
 
-            Dictionary[key] = value;
+            Dictionary[key.ToLower()] = value;
         }
 
         public void Update(string key, object value)
@@ -56,7 +56,7 @@ namespace Jetmax.Testing.Gui.Core
 
         public object Get(string key)
         {
-            var valueExists = Dictionary.TryGetValue(key, out var outVal);
+            var valueExists = Dictionary.TryGetValue(key.ToLower(), out var outVal);
             if (valueExists)
             {
                 return outVal;
@@ -84,6 +84,50 @@ namespace Jetmax.Testing.Gui.Core
             {
                 Add(param.Key, param.Value);
             }
+
+            AddContact();
+            AddUkAddress();
+            AddVisaPayment("visa");
+        }
+
+        public TestData AddPassengers()
+        {
+            return this;
+        }
+
+        public TestData AddContact()
+        {
+            Add("contact-first-name", "Test");
+            Add("contact-lastname-name", "Autotest");
+            Add("contact-email", "autotest.byojet@gmail.com");
+            Add("contact-mobile", "0421555777");
+
+            return this;
+        }
+
+        public TestData AddUkAddress()
+        {
+            Add("street-number", "Flat 95");
+            Add("street-name", "North End House, Fitzjames Avenue");
+            Add("suburb", "London");
+            Add("state", "London");
+            Add("postcode", "W14 0RY");
+            Add("country","uk");
+
+            return this;
+        }
+
+        public TestData AddVisaPayment(string formOfPayment)
+        {
+            Add("card-brand", "visa");
+            Add("card-type", "credit");
+            Add("card-number", "4111111111111111");
+            Add("card-holder", "MR BYOJET AUTOTEST");
+            Add("card-cvv", "123");
+            Add("card-expiry-month", "10");
+            Add("card-expiry-year", DateTime.Now.AddYears(2).Year);
+            
+            return this;
         }
     }
 }

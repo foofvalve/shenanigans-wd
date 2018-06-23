@@ -69,6 +69,15 @@ namespace Jetmax.Testing.Gui.UnitTests
         }
 
         [TestMethod]
+        public void TestKeysAreCaseInsensitive()
+        {
+            var testData = new TestData();
+            testData.Add("mEh", 33);
+            testData.Get<int>("Meh").ShouldBe(33);
+            testData.Count.ShouldBe(1);
+        }
+
+        [TestMethod]
         public void TestAddingFlightSearchDataContent()
         {
             var testData = new TestData();
@@ -81,12 +90,35 @@ namespace Jetmax.Testing.Gui.UnitTests
                 Adults = 1
             });
 
-            Assert.IsTrue(testData.Find("Origin") == "SYD");
+            testData.Find("Origin").ShouldBe("SYD");
+            testData.Find("Destination").ShouldBe("AKL");
             testData.Print();
         }
 
         [TestMethod]
+        public void TestDefaultsValuesForChildrenAndInfantIsZero()
+        {
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 1
+            });
+            testData.Find("Children").ShouldBe("0");
+            testData.Find("Infants").ShouldBe("0");
+        }
+
+        [TestMethod]
         public void TestSeedingCustomerDetails()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void TestSeedingMixedPaxCustomerDetails()
         {
             throw new NotImplementedException();
         }
