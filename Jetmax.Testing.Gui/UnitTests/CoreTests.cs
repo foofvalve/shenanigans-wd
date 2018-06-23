@@ -29,7 +29,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         public void TestInputtingValueIntoTextField()
         {
             Wd.Get(TestPage.EnterTextField).SetText("cheese");
-            Wd.Get(TestPage.EnterTextField).GetAttribute("value").ShouldBe("chees");
+            Wd.Get(TestPage.EnterTextField).GetAttribute("value").ShouldBe("cheese");
         }
 
         [TestMethod]

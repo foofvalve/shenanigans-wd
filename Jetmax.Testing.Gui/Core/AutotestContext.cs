@@ -6,6 +6,7 @@ using OpenQA.Selenium.Firefox;
 
 namespace Jetmax.Testing.Gui.Core
 {
+    [TestClass]
     public class AutotestContext
     {
         public static ScreenRecorder ScreenRecorder;
@@ -14,7 +15,7 @@ namespace Jetmax.Testing.Gui.Core
 
         public TestContext TestContext { get; set; }
 
-        [ClassInitialize]
+        [AssemblyInitializeAttribute]
         public static void SuiteSetup(TestContext testContext)
         {
             RunInBrowser = testContext.Properties["runInBrowser"].ToString();
@@ -30,6 +31,12 @@ namespace Jetmax.Testing.Gui.Core
             if (RunInBrowser == "chrome")
             {
                 Wd = new ChromeDriver();
+            }
+            else if (RunInBrowser == "firefox-headless")
+            {
+                var options = new FirefoxOptions();
+                options.AddArguments("--headless");
+                Wd = new FirefoxDriver(options);
             }
             else
             {
