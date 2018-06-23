@@ -33,7 +33,7 @@ namespace Jetmax.Testing.Gui.Tests
         public void TestCleanUp()
         {
             ScreenRecorder.StopRecording();
-            _testData.Print();
+            _testData?.Print();
             Log.Print();
         }
     }

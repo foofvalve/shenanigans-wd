@@ -2,7 +2,7 @@
 <RunSettings>
   <!-- Parameters used by tests at runtime -->
   <TestRunParameters>
-    <Parameter name="runInBrowser" value="firefox-headless" />
+    <Parameter name="runInBrowser" value="chrome-headless" />
     <Parameter name="webAppUrl" value="http://localhost" />
     <Parameter name="apiAppUserName" value="Admin" />
     <Parameter name="apiAppPassword" value="Password" />

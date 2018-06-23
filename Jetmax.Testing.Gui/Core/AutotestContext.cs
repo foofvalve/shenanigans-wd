@@ -1,7 +1,9 @@
 ﻿using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 
 namespace Jetmax.Testing.Gui.Core
@@ -18,7 +20,7 @@ namespace Jetmax.Testing.Gui.Core
         [AssemblyInitializeAttribute]
         public static void SuiteSetup(TestContext testContext)
         {
-            RunInBrowser = testContext.Properties["runInBrowser"].ToString();
+            RunInBrowser = testContext.Properties["runInBrowser"].ToString().ToLower();
         }
 
         public static void Init(string testName)
@@ -37,6 +39,17 @@ namespace Jetmax.Testing.Gui.Core
                 var options = new FirefoxOptions();
                 options.AddArguments("--headless");
                 Wd = new FirefoxDriver(options);
+            }
+            else if (RunInBrowser == "chrome-headless")
+            {
+                var chromeOptions = new ChromeOptions();
+                chromeOptions.AddArguments("headless");
+
+                Wd = new ChromeDriver(chromeOptions);
+            }
+            else if (RunInBrowser == "edge")
+            {
+                Wd = new EdgeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             }
             else
             {

@@ -100,6 +100,11 @@
     <Folder Include="Utils\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\packages\Selenium.Microsoft.Webdriver2.2.0.10586.1\driver\MicrosoftWebDriver.exe">
+      <Link>MicrosoftWebDriver.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Readme.txt" />
     <Content Include="UnitTests\Test.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
