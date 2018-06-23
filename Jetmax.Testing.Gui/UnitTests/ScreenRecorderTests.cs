@@ -1,6 +1,7 @@
 ﻿using Jetmax.Testing.Gui.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using Shouldly;
 
 namespace Jetmax.Testing.Gui.UnitTests
 {
@@ -19,9 +20,13 @@ namespace Jetmax.Testing.Gui.UnitTests
             System.Threading.Thread.Sleep(200);
             var recording = screenRecord.StopRecording();
 
-            Assert.IsTrue(File.Exists(recording));
-            Assert.IsTrue(new FileInfo(recording).Length > 0);
-            Assert.IsTrue(recording.Contains("scr_") && recording.EndsWith("wmv"));
+            File.Exists(recording).ShouldBeTrue();
+            new FileInfo(recording).Length.ShouldBeGreaterThan(0);
+            recording.ShouldSatisfyAllConditions(
+                () => recording.ShouldContain("scr"),
+                () => recording.ShouldEndWith("wmv")
+            );
+  
             File.Delete(recording);
         }
 
@@ -34,7 +39,7 @@ namespace Jetmax.Testing.Gui.UnitTests
             var saveFolder = Path.GetTempPath();
             var screenRecorder = new ScreenRecorder(saveFolder, invalidFileName);
             screenRecorder.StartRecording();
-            Assert.IsNull(screenRecorder);
+            screenRecorder.ShouldBeNull();
         }
 
         [TestMethod]
@@ -44,8 +49,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             var saveFolder = @"Z:\\note*valie\dir:\";
             var screenRecorder = new ScreenRecorder(saveFolder, FileName);
-            //creenRecorder.StartRecording();
-            Assert.IsNull(screenRecorder);
+            screenRecorder.ShouldBeNull();
         }
     }
 }

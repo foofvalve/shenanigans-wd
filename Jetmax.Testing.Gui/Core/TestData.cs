@@ -17,18 +17,6 @@ namespace Jetmax.Testing.Gui.Core
             Dictionary = new Dictionary<object, object>();
         }
 
-        public void Add(TestParams testParams)
-        {
-            var paramsAsDict = testParams.GetType()
-                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                .ToDictionary(prop => prop.Name, prop => prop.GetValue(testParams, null));
-
-            foreach (var param in paramsAsDict)
-            {
-                Add(param.Key, param.Value);
-            }
-        }
-
         public void Add(string key, object value)
         {
             var valueExists = Dictionary.TryGetValue(key, out var outVal);
@@ -38,6 +26,15 @@ namespace Jetmax.Testing.Gui.Core
             }
 
             Dictionary[key] = value;
+        }
+
+        public void Update(string key, object value)
+        {
+            var valueExists = Dictionary.TryGetValue(key, out var outVal);
+            if (valueExists)
+            {
+                Dictionary[key] = value;
+            }
         }
 
         public string Print()
@@ -75,6 +72,18 @@ namespace Jetmax.Testing.Gui.Core
         public void Reset()
         {
             Dictionary?.Clear();
+        }
+        
+        public void Add(TestParams testParams)
+        {
+            var paramsAsDict = testParams.GetType()
+                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .ToDictionary(prop => prop.Name, prop => prop.GetValue(testParams, null));
+
+            foreach (var param in paramsAsDict)
+            {
+                Add(param.Key, param.Value);
+            }
         }
     }
 }

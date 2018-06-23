@@ -1,5 +1,6 @@
 ﻿using Jetmax.Testing.Gui.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shouldly;
 
 namespace Jetmax.Testing.Gui.UnitTests
 {
@@ -13,7 +14,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             Log.Init(TestContext.TestName);
             var logs = Log.Print();
-            Assert.IsTrue(logs == "TEST DATA\r\n");
+            logs.ShouldBe("TEST DATA\r\n"); 
         }
 
         [TestMethod]
@@ -22,7 +23,7 @@ namespace Jetmax.Testing.Gui.UnitTests
             Log.Init(TestContext.TestName);
             Log.Add("this message");
             var logs = Log.Print();
-            Assert.IsTrue(logs.Contains(TestContext.TestName + " this message"));
+            logs.ShouldContain(TestContext.TestName + " this message");
         }
     }
 }

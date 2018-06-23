@@ -1,8 +1,8 @@
-﻿using System;
-using System.CodeDom;
-using Jetmax.Testing.Gui.Core;
+﻿using Jetmax.Testing.Gui.Core;
 using Jetmax.Testing.Gui.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Shouldly;
+using System;
 
 namespace Jetmax.Testing.Gui.UnitTests
 {
@@ -24,8 +24,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             var testData = new TestData();
             testData.Add("meh", "the-val");
-            var expectedResult = testData.Find("meh");
-            Assert.AreEqual("the-val", expectedResult);
+            testData.Find("meh").ShouldBe("the-val");
         }
 
         [TestMethod]
@@ -33,8 +32,7 @@ namespace Jetmax.Testing.Gui.UnitTests
         {
             var testData = new TestData();
             testData.Add("meh", true);
-            var value = testData.Get<bool>("meh");
-            Assert.AreEqual(value, true);
+            testData.Get<bool>("meh").ShouldBeTrue();
         }
 
         [TestMethod]
@@ -44,7 +42,7 @@ namespace Jetmax.Testing.Gui.UnitTests
             testData.Add("meh", true);
             testData.Add("meh2", true);
             testData.Reset();
-            Assert.IsTrue(testData.Count == 0);
+            testData.Count.ShouldBe(0);
         }
 
         [TestMethod]
@@ -56,8 +54,18 @@ namespace Jetmax.Testing.Gui.UnitTests
             testData.Add("Age", 22);
             testData.Add("Paid", true);
             var result = testData.Print();
-            Assert.IsTrue(result.Contains("Firstname : John"));
-            Assert.IsTrue(result.Contains("Paid : True"));
+            result.ShouldContain("Firstname : John");
+            result.ShouldContain("Paid : True");
+        }
+
+        [TestMethod]
+        public void TestUpdateValue()
+        {
+            var testData = new TestData();
+            testData.Add("meh", 33);
+            testData.Update("meh", 42);
+            testData.Get<int>("meh").ShouldBe(42);
+            testData.Count.ShouldBe(1);
         }
 
         [TestMethod]
