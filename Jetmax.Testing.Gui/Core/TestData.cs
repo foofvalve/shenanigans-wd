@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Humanizer;
 using Jetmax.Testing.Gui.Models;
 
 namespace Jetmax.Testing.Gui.Core
@@ -85,6 +86,7 @@ namespace Jetmax.Testing.Gui.Core
                 Add(param.Key, param.Value);
             }
 
+            AddPassengers();
             AddContact();
             AddUkAddress();
             AddVisaPayment("visa");
@@ -92,6 +94,41 @@ namespace Jetmax.Testing.Gui.Core
 
         public TestData AddPassengers()
         {
+            string[] titles = { "Mr", "Ms" };
+            var passengerIndex = 0;
+
+            for (var i = 0; i < Get<int>("adults"); i++)
+            {
+                Add($"passenger-{passengerIndex}-type", "adult");
+                Add($"passenger-{passengerIndex}-title", titles[new Random().Next(0, titles.Length)]);
+                Add($"passenger-{passengerIndex}-firstname", "Ad" + i.ToWords());
+                Add($"passenger-{passengerIndex}-middlename", "Autotest");
+                Add($"passenger-{passengerIndex}-lastname", "Test");
+                Add($"passenger-{passengerIndex}-dob", DateTime.Now.AddYears(-30).AddDays(i));
+                passengerIndex++;
+            }
+
+            for (var i = 0; i < Get<int>("children"); i++)
+            {
+                Add($"passenger-{passengerIndex}-type", "child");
+                Add($"passenger-{passengerIndex}-title", titles[new Random().Next(0, titles.Length)]);
+                Add($"passenger-{passengerIndex}-firstname", "Ch" + i.ToWords());
+                Add($"passenger-{passengerIndex}-middlename", "Autotest");
+                Add($"passenger-{passengerIndex}-lastname", "Test");
+                Add($"passenger-{passengerIndex}-dob", DateTime.Now.AddYears(-7).AddDays(i));
+                passengerIndex++;
+            }
+
+            for (var i = 0; i < Get<int>("infants"); i++)
+            {
+                Add($"passenger-{passengerIndex}-type", "infant");
+                Add($"passenger-{passengerIndex}-title", titles[new Random().Next(0, titles.Length)]);
+                Add($"passenger-{passengerIndex}-firstname", "In" + i.ToWords());
+                Add($"passenger-{passengerIndex}-middlename", "Autotest");
+                Add($"passenger-{passengerIndex}-lastname", "Test");
+                Add($"passenger-{passengerIndex}-dob", DateTime.Now.AddMonths(-3).AddDays(i));
+                passengerIndex++;
+            }
             return this;
         }
 

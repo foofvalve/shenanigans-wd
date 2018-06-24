@@ -107,38 +107,96 @@ namespace Jetmax.Testing.Gui.UnitTests
                 Arrival = DateTime.Today.AddDays(15),
                 Adults = 1
             });
-            testData.Find("Children").ShouldBe("0");
-            testData.Find("Infants").ShouldBe("0");
+            testData.Get<int>("Children").ShouldBe(0);
+            testData.Get<int>("Infants").ShouldBe(0);
         }
 
         [TestMethod]
-        public void TestSeedingCustomerDetails()
+        public void TestSeedingPassengerDetails()
         {
-            throw new NotImplementedException();
-        }
-
-        [TestMethod]
-        public void TestSeedingMixedPaxCustomerDetails()
-        {
-            throw new NotImplementedException();
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 2,
+                Children = 1,
+                Infants = 1
+            });
+            testData.Find("passenger-0-type").ShouldBe("adult");
+            testData.Find("passenger-0-firstname").ShouldBe("Adzero");
+            testData.Find("passenger-1-type").ShouldBe("adult");
+            testData.Find("passenger-1-firstname").ShouldBe("Adone");
+            testData.Find("passenger-2-type").ShouldBe("child");
+            testData.Find("passenger-2-firstname").ShouldBe("Chzero");
+            testData.Find("passenger-3-type").ShouldBe("infant");
+            testData.Find("passenger-3-firstname").ShouldBe("Inzero");
+            testData.Find("passenger-3-middlename").ShouldBe("Autotest");
+            testData.Find("passenger-3-lastname").ShouldBe("Test");
         }
 
         [TestMethod]
         public void TestSeedingContactDetails()
         {
-            throw new NotImplementedException();
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 1
+            });
+            var testParams = testData.Print().Split(Environment.NewLine.ToCharArray());
+            testParams.ShouldContain("contact-first-name : Test");
+            testParams.ShouldContain("contact-lastname-name : Autotest");
+            testParams.ShouldContain("contact-email : autotest.byojet@gmail.com");
+            testParams.ShouldContain("contact-mobile : 0421555777");
         }
 
         [TestMethod]
         public void TestSeedingAddressDetails()
         {
-            throw new NotImplementedException();
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 1
+            });
+            var testParams = testData.Print().Split(Environment.NewLine.ToCharArray());
+            testParams.ShouldContain("street-number : Flat 95");
+            testParams.ShouldContain("street-name : North End House, Fitzjames Avenue");
+            testParams.ShouldContain("suburb : London");
+            testParams.ShouldContain("state : London");
+            testParams.ShouldContain("postcode : W14 0RY");
+            testParams.ShouldContain("country : uk");
         }
 
         [TestMethod]
         public void TestSeedingFormOfPaymentDetails()
         {
-            throw new NotImplementedException();
+            var testData = new TestData();
+            testData.Add(new TestParams
+            {
+                Origin = "SYD",
+                Destination = "AKL",
+                Departure = DateTime.Today.AddDays(10),
+                Arrival = DateTime.Today.AddDays(15),
+                Adults = 1
+            });
+            var testParams = testData.Print().Split(Environment.NewLine.ToCharArray());
+            testParams.ShouldContain("card-brand : visa");
+            testParams.ShouldContain("card-type : credit");
+            testParams.ShouldContain("card-number : 4111111111111111");
+            testParams.ShouldContain("card-holder : MR BYOJET AUTOTEST");
+            testParams.ShouldContain("card-cvv : 123");
+            testParams.ShouldContain("card-expiry-month : 10");
+            testParams.ShouldContain("card-expiry-year : " + DateTime.Now.AddYears(2).Year);
         }
     }
 }
